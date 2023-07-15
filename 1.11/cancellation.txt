@@ -1,0 +1,11 @@
+1st run (fetch exceeded 2 seconds for https://reddit.com)
+
+0.41s   20238 https://google.com
+Error while fetching https://badgopl.io: Get "https://badgopl.io": dial tcp: lookup badgopl.io: no such host
+Error while reading https://reddit.com: context canceled
+
+2nd run (fetch did not exceed)
+
+0.39s   20377 https://google.com
+Error while fetching https://badgopl.io: Get "https://badgopl.io": dial tcp: lookup badgopl.io: no such host
+2.00s 1116183 https://reddit.com

@@ -1,0 +1,3 @@
+0.35s   20317 https://google.com
+Get "https://badgopl.io": dial tcp: lookup badgopl.io: no such host
+1.59s 1100227 https://reddit.com
