@@ -1,0 +1,4 @@
+1st place: popCountExpression
+2nd place: popCountLoop
+3rd place: popCountClearRightmost
+4th place: popCountShift
