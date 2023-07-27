@@ -1,0 +1,51 @@
+cpu: Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz
+
+                                 ITERATIONS | NANOSECONDS/OPERATION | BYTE ALLOCATION/OPER | ALLOCATIONS/OPERATION
+BenchmarkMandelbrot64-4            19056337         59.08 ns/op             4 B/op                 1 allocs/op
+
+BenchmarkMandelbrot-4              20639479         56.90 ns/op             4 B/op                 1 allocs/op
+
+BenchmarkMandelbrotBigFloat-4       2017300         593.4 ns/op             248 B/op               11 allocs/op
+
+BenchmarkMandelbrotRat-4             529063         2066 ns/op              930 B/op               42 allocs/op
+
+PASS
+ok      GoBookSolutions/3.8     5.712s
+
+---------------------------------------------------------------------------------------------------------------------
+
+ZOOM TEST
+
+The appearance of rendering artifacts, such as pixelation or jagged edges, depends on the zoom level and the
+resolution of the image being generated. In our code, the image size is set to 1024x1024 pixels, and the
+fractal is computed within the rectangular region defined by (xmin, ymin) and (xmax, ymax). The range of the complex
+plane being rendered is from (-2, -2) to (2, 2).
+
+The level at which rendering artifacts become visible will depend on the complexity and detail of the fractal being
+rendered, as well as the precision of the data types used in the computations. Generally, as you zoom in closer to
+the fractal, you will start to notice more intricate details, and at some point, the limited resolution of the image
+or the precision of the computation may cause artifacts to become visible.
+
+For the Mandelbrot set, as you zoom in closer, you may notice artifacts like pixelation, aliasing, and staircase
+patterns along the edges of the fractal. These artifacts are a result of the finite resolution of the image and the
+discrete nature of the pixel grid. Additionally, when using limited precision data types (e.g., complex64, big.Float
+with limited precision), you may encounter artifacts due to rounding errors in the calculations.
+
+Zoom levels and appearance of artifacts based on zoom levels of VSCO:
+
+complex64_fractal.png   : 100%
+complex128_fractal.png  : 100%
+bigFloat_fractal.png    : 100%
+bigRat_fractal.png      : 300%
+
+Altought it appears like there is no difference between the first three images, the truth lies when we zoom in the
+most. At the same zoom levels, complex64 and complex128 have a slight difference. The first one shows a more zoomed
+out image than the later, which means that complex128 has a higher rendering capability. In the case of complex128 vs
+bigFloat the images are exactly the same. The reason for this is that both complex128 and big.Float are capable of
+representing complex numbers with high precision. Keep in mind that the use of big.Float comes with the advantage of
+arbitrary precision, meaning that you can choose the precision of your computations. This can be useful for cases
+where extremely high precision is required, or for exploring the fractal at extreme zoom levels. However, for many
+practical purposes, complex128 should provide sufficient precision for rendering visually accurate Mandelbrot fractals.
+
+As for bigRat, note that the image does not contain a fully computed image, but you can still see that it offers great
+precision.
